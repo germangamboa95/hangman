@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <title>Document</title>
 
@@ -27,16 +29,15 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">Javascript</a></li>
-      <li><a href="mobile.html">Mobile</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
   </header>
   <main>
     <div class="container center-align">
       <div class="row">
-        <div class="card col s12 m5 red lighten-1">
+
+        <div id="intro" class="card col s12 m5 red lighten-1 animated">
           <div class="card-content white-text">
             <span class="card-title">Please Help!</span>
             <p>Doctor, I am glad you could make it. We need help diagnosing these patients. All we have to go is synonyms of condition. We can only afford to make 6 errors per patient.</p>
@@ -47,7 +48,7 @@
           </div>
         </div>
 
-        <div class="card col s12 m5 red lighten-1">
+        <div id="instructions" class="card col s12 m5 red lighten-1 animated">
           <div class="card-content white-text">
             <span class="card-title">Instructions</span>
             <p>Guess the word one letter at the time. Use the clues to guide you. Remember you only have 6 attempts per patient. Good Luck!</p>
@@ -58,7 +59,7 @@
           </div>
         </div>
 
-        <div id="game-card" class="card col s12 m6">
+        <div id="game-card" class="card col s12 m6 animated">
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator game-img" src="assets/imgs/stickman/Untitled-1.png" alt="stickman image container">
           </div>
@@ -69,8 +70,8 @@
               <span>A</span> B C D E F G H <span>I</span> J K L M N O P Q R S T U V W X Y Z
             </div>
             <ul>
-              <li>Patients saved: 0</li>
-              <li>Patients lost: 99</li>
+              <li id="p-saved">Patients saved: 0</li>
+              <li id="p-lost">Patients lost: 99</li>
             </ul>
           </div>
           <div class="card-reveal">
@@ -96,6 +97,7 @@
   <script type="text/javascript">
     M.AutoInit();
   </script>
+  <script src="scripts/main.js" charset="utf-8"></script>
 
 </body>
 
