@@ -62,13 +62,21 @@
         <div class="row">
         <div id="game-card" class="card col s12 m12 animated">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator game-img" src="assets/imgs/stickman/Untitled-1.png" alt="stickman image container">
+            <div class="stickman-container">
+            <img  class="game-img base" src="assets/imgs/stickman/head.png" alt="stickman image container">
+            <img  class=" game-img overlay" src="assets/imgs/stickman/body.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img   class=" game-img overlay" src="assets/imgs/stickman/left-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img  class=" game-img overlay" src="assets/imgs/stickman/right-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img  class=" game-img overlay" src="assets/imgs/stickman/left-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img  class=" game-img overlay" src="assets/imgs/stickman/right-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+        </div>
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4">Operating Room<i class="material-icons right">more_vert</i></span>
             <div id="current-word">_ _ _ _ _ _ _ _ </div>
+            <input id='input' type="text" name="" value="">
             <div id="letters-tried">
-            
+
             </div>
             <ul>
               <li id="p-saved">Patients saved: 0</li>

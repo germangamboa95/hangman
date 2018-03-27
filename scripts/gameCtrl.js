@@ -12,13 +12,6 @@ const game = {
 
   won: 0,
 
-  checkLetter: (letter, word) => (word.split('').indexOf(letter) > -1)? true: false,
-
-  rand: (len) => Math.floor(Math.random() * len)
-
-};
-
-const ui = {
   dash: '',
 
   dashCreator: word => word.split('').map(item => item = '-').join(''),
@@ -36,6 +29,15 @@ const ui = {
     return arr;
   },
 
+  checkLetter: (letter, word) => (word.split('').indexOf(letter) > -1)? true: false,
+
+  rand: (len) => Math.floor(Math.random() * len)
+
+};
+
+const ui = {
+
+
   slideIn: (id) => {
     id.style.display = 'block';
     id.classList.add('slideInRight');
@@ -43,6 +45,10 @@ const ui = {
 
   slideOut: (id) => {
     id.classList.add('slideOutLeft');
+  },
+
+  removePart: (id) => {
+    id.style.display = "none";
   }
 
 

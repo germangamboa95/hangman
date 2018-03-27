@@ -23,6 +23,21 @@
   width: 4em;
   height: auto;
 }
+.stickman-container{
+  position: relative;
+}
+.stickman-container .base{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.stickman-container .overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 
 #letters-tried >span {

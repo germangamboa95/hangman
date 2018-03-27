@@ -19,9 +19,9 @@ function startGame(){
   document.addEventListener('keyup', (e) =>{
     let letter = e.key;
     if(game.checkLetter(letter, game.wordSelected)){
-      let x = ui.getLetterPos(game.wordSelected, letter);
-      ui.dash = ui.updateDash(ui.dash,letter, x);
-      currentWord.innerText = ui.dash;
+      let x = game.getLetterPos(game.wordSelected, letter);
+      game.dash = game.updateDash(game.dash,letter, x);
+      currentWord.innerText = game.dash;
 
 
       if(ui.dash == game.wordSelected){
@@ -49,8 +49,8 @@ function startGame(){
 function int() {
   introCard.addEventListener('click', () => ui.slideOut(introCard));
   game.wordSelected = game.words[game.rand(game.wordsLen())];
-  ui.dash = ui.dashCreator(game.wordSelected);
-  currentWord.innerText = ui.dash;
+  game.dash = game.dashCreator(game.wordSelected);
+  currentWord.innerText = game.dash;
   console.log(game.wordSelected);
   instructionsCard.addEventListener('click', () => {
     startGame();
