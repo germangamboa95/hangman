@@ -10,55 +10,74 @@ const pSaved = document.getElementById('p-saved');
 const pLost = document.getElementById('p-lost');
 const rand = (len) => Math.floor(Math.random() * len);
 let dataObj;
-let wrongGuesses = 0;
 const re = /A-Z/;
 
-const checkLetter = (letter, word) => (word.split('').indexOf(letter) > -1)? true: false;
-
-const dashCreator = word => word.split('').map(item => item = '-').join('');
 
 
-// FIX ME! Use a reduce eventually
-const getLetterPos = (word, letter) => {
-  let arr = [];
-  word.split('').forEach( (item, index) => {
-    if(item === letter) arr.push(index);
-  });
-  return arr;
-};
+function startGame(){
 
-const updateDash = (dash, letter, pos) => {
-  dash = dash.split('');
-  pos.forEach(item => dash[item] = letter);
-  return dash.join('');
-};
+  document.addEventListener('keyup', (e) =>{
+    let letter = e.key;
+    if(game.checkLetter(letter, game.wordSelected)){
+      let x = ui.getLetterPos(game.wordSelected, letter);
+      ui.dash = ui.updateDash(ui.dash,letter, x);
+      currentWord.innerText = ui.dash;
 
-const game = () => {
-  let wordSelector = 'fever';
-  let dash = dashCreator(wordSelector);
-  console.log(dash);
-  document.addEventListener(
-    'keyup',
-    (e) => {
-      let guess = checkLetter(e.key, wordSelector);
 
-      if(guess){
-        console.log('yep');
-        let pos = getLetterPos(wordSelector, e.key);
-        dash = updateDash(dash, e.key, pos);
-        console.log(dash);
-        if(dash === wordSelector) console.log('You win!');
-
-      } else{
-        wrongGuesses++;
+      if(ui.dash == game.wordSelected){
+        game.won++;
+        pSaved.innerText = `Patients saved: ${game.won}`;
+        console.log('you win!');
+        int();
       }
 
-
+    } else{
+      game.wrongGuesses++;
+      lettersTried.innerHTML +=`<span>${letter}</span>`;
+      if(game.wrongGuesses > 10){
+        lettersTried.innerHTML = '';
+        game.wrongGuesses = 0;
+        game.lost++;
+        pLost.innerText = `Patients Lost: ${game.lost}`;
+        console.log('you lost');
+        int();
+      }
     }
-  );
-};
+  });
+}
 
-game();
+function int() {
+  introCard.addEventListener('click', () => ui.slideOut(introCard));
+  game.wordSelected = game.words[game.rand(game.wordsLen())];
+  ui.dash = ui.dashCreator(game.wordSelected);
+  currentWord.innerText = ui.dash;
+  console.log(game.wordSelected);
+  instructionsCard.addEventListener('click', () => {
+    startGame();
+ });
+
+}
+
+
+int();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const initGame = () => {
   // let wordSelector = () => words[rand(words.length)];
@@ -69,15 +88,6 @@ const initGame = () => {
   // });
 
 };
-
-
-
-
-
-
-
-
-
 
 
 function getData(req){
