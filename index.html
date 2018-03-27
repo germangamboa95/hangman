@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <header>
+    <nav class="blue accent-1">
+      <div class="container nav-wrapper">
+        <img class="responsive-img brand-logo" src="assets/imgs/logo.svg" alt="">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+  </header>
+  <main>
+    <div class="container center-align">
+      <div class="row">
+        <div class="card col s12 m5 red lighten-1">
+          <div class="card-content white-text">
+            <span class="card-title">Please Help!</span>
+            <p>Doctor, I am glad you could make it. We need help diagnosing these patients. All we have to go is synonyms of condition. We can only afford to make 6 errors per patient.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">Let's go!</a>
+
+          </div>
+        </div>
+
+        <div class="card col s12 m5 red lighten-1">
+          <div class="card-content white-text">
+            <span class="card-title">Instructions</span>
+            <p>Guess the word one letter at the time. Use the clues to guide you. Remember you only have 6 attempts per patient. Good Luck!</p>
+          </div>
+          <div class="card-action">
+            <a href="#">Let's go!</a>
+
+          </div>
+        </div>
+
+        <div id="game-card" class="card col s12 m6">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator game-img" src="assets/imgs/stickman/Untitled-1.png" alt="stickman image container">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Operating Room<i class="material-icons right">more_vert</i></span>
+            <div id="current-word">_ _ _ _ _ _ _ _ </div>
+            <div id="letters-tried">
+              <span>A</span> B C D E F G H <span>I</span> J K L M N O P Q R S T U V W X Y Z
+            </div>
+            <ul>
+              <li>Patients saved: 0</li>
+              <li>Patients lost: 99</li>
+            </ul>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <footer class="page-footer blue darken-4">
+
+    <div class="footer-copyright">
+      <div class="container center-align">
+        Made by German Gamboa
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script type="text/javascript">
+    M.AutoInit();
+  </script>
+
+</body>
+
+</html>

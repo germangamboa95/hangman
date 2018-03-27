@@ -1,0 +1,23 @@
+{
+  "name": "hangmangame",
+  "version": "1.0.0",
+  "description": "Hangman Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/germangamboa95/hangman.git"
+  },
+  "author": "German Gamboa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/germangamboa95/hangman/issues"
+  },
+  "homepage": "https://github.com/germangamboa95/hangman#readme",
+  "dependencies": {
+    "node-fetch": "^2.1.2",
+    "unirest": "^0.5.1"
+  }
+}

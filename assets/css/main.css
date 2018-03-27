@@ -1,0 +1,46 @@
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+   background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  .card {
+    max-width: 30em;
+  }
+.brand-logo{
+  width: 1.85em;
+  margin-top: .05em;
+}
+.social-media li{
+  display: inline-block;
+}
+
+.social-img{
+  width: 4em;
+  height: auto;
+}
+
+#letters-tried >span {
+  text-decoration: line-through;
+  font-style: italic;
+  color: red;
+}
+@media (min-width: 600px){
+  #game-card{
+    margin-left: .75em;
+  }
+  #about-me{
+    width: 30em;
+    margin: 2em auto;
+  }
+  .brand-logo{
+    width: 1.8em;
+    margin-top: .25em;
+    margin-left: .25em;
+  }
+
+}
