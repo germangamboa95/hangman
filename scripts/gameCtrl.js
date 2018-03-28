@@ -1,12 +1,12 @@
-function getData(req) {
-  return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/synonyms', {
-    method: 'GET',
-    headers: {
-      "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
-      "X-Mashape-Host": "wordsapiv1.p.mashape.com"
-    }
-  });
-}
+// function getData(req) {
+//   return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/definitions', {
+//     method: 'GET',
+//     headers: {
+//       "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
+//       "X-Mashape-Host": "wordsapiv1.p.mashape.com"
+//     }
+//   });
+// }
 
 const Game = {
 
@@ -41,11 +41,15 @@ const Game = {
     return dash.join('');
   },
 
+
+/// Word is the computer word and letter is the letter the user guessed right
   getLetterPos: (word, letter) => {
     let arr = [];
+    //map???????
     word.split('').forEach((item, index) => {
       if (item === letter) arr.push(index);
     });
+
     return arr;
   },
 
@@ -60,7 +64,7 @@ const Game = {
     console.log(data.selected);
      getData(data.selected)
      .then(res => res.json())
-     .then(json => data.synonyms = json.synonyms);
+     .then(json => data.synonyms = json.definitions);
     return data;
   },
 
@@ -109,9 +113,9 @@ const Game = {
       data.selected = data.words[this.rand(data.words.length)];
       data.dash = this.dashCreator(data.selected);
       data.lettersTried = [];
-       getData(data.selected)
-       .then(res => res.json())
-       .then(json => data.synonyms = json.synonyms);
+      getData(data.selected)
+      .then(res => res.json())
+      .then(json => data.synonyms = json.definitions);
       console.log("Reset", data);
     }
 

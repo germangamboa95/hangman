@@ -27,11 +27,7 @@ instructionsCard.addEventListener('click', () => {
 
 let gamedata = Game.init();
 Ui.updateUi(currentWord, gamedata.dash);
-
-
-gameCard.addEventListener('click', () => Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item}</li>`).join('')));
-
-
+gameCard.addEventListener('click', () => Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item.definition}</li>`).join('')));
 input.addEventListener(
   'keyup',
    e => {
@@ -43,7 +39,7 @@ input.addEventListener(
      Ui.updateUi(pSaved, `Patients saved: ${gamedata.won}.`);
      Ui.updateUi(pLost, `Patients lost: ${gamedata.lost}.`);
      Ui.updateUi(lettersTried, gamedata.lettersTried.map(item => item = `<span>${item}</span>`).join(''));
-     Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item}</li>`).join(''));
+     Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item.definition}</li>`).join(''));
      Ui.removePart(images[gamedata.tries]);
      if(gamedata.resetImg) {
        Ui.resetImg(images);
@@ -52,7 +48,5 @@ input.addEventListener(
 
    }
 );
-
-
 
 };
