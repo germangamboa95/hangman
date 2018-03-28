@@ -12,61 +12,22 @@ const images = document.querySelectorAll('.game-img');
 let dataObj;
 const re = /^([a-z])$/;
 
-console.log(images);
+Game.init();
 
-function startGame() {
+input.addEventListener(
+  'keyup',
+   e => {
+     let letter = e.key;
+     let gamedata = Game.play(letter);
+     console.log(gamedata);
 
-  input.addEventListener('keyup', (e) => {
-    let letter = e.key;
-    console.log(game.wrongGuesses);
-    let test = re.test(letter);
-
-    if (test) {
-
-      if (game.checkLetter(letter, game.wordSelected)) {
-        let x = game.getLetterPos(game.wordSelected, letter);
-        game.dash = game.updateDash(game.dash, letter, x);
-        currentWord.innerText = game.dash;
-
-
-        if (game.dash == game.wordSelected) {
-          lettersTried.innerHTML = '';
-          game.won++;
-          pSaved.innerText = `Patients saved: ${game.won}`;
-          console.log('you win!');
-        }
-
-      } else {
-        game.wrongGuesses--;
-
-        if(images[game.wrongGuesses])ui.removePart(images[game.wrongGuesses]);
-        lettersTried.innerHTML += `<span>${letter}</span>`;
-        if (game.wrongGuesses == 0) {
-          lettersTried.innerHTML = '';
-          game.wrongGuesses = 8;
-          game.lost++;
-          pLost.innerText = `Patients Lost: ${game.lost}`;
-          console.log('you lost');
-
-        }
-      }
-    }
-  });
-}
-
-function int() {
-  ui.resetImg(images);
-  game.wordSelected = game.words[game.rand(game.wordsLen())];
-  game.dash = game.dashCreator(game.wordSelected);
-  currentWord.innerText = game.dash;
-  console.log(game.wordSelected);
-  startGame();
-}
-
-
-
-
-int();
+     input.value = '';
+     Ui.updateUi(currentWord, gamedata.dash);
+     Ui.updateUi(pSaved, `Patients saved ${gamedata.won}.`);
+     Ui.updateUi(pLost, `Patients saved ${gamedata.lost}.`);
+     Ui.updateUi(lettersTried, gamedata.lettersTried.map(item => item = `<span>${item}</span>`).join(''));
+   }
+);
 
 
 
@@ -76,15 +37,6 @@ int();
 
 
 
-const initGame = () => {
-  // let wordSelector = () => words[rand(words.length)];
-  // getData('fever')
-  // .then(res => res.json())
-  // .then(data => {
-  //   console.log(sortData(data));
-  // });
-
-};
 
 
 function getData(req) {
