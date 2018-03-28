@@ -1,4 +1,3 @@
-
 //Global
 const words = ['hives', 'fever', 'nausea', 'injury'];
 const introCard = document.getElementById('intro');
@@ -8,68 +7,66 @@ const currentWord = document.getElementById('current-word');
 const lettersTried = document.getElementById('letters-tried');
 const pSaved = document.getElementById('p-saved');
 const pLost = document.getElementById('p-lost');
-const rand = (len) => Math.floor(Math.random() * len);
+const input = document.getElementById('input');
+const images = document.querySelectorAll('.game-img');
 let dataObj;
-const re = /A-Z/;
+const re = /^([a-z])$/;
 
+console.log(images);
 
+function startGame() {
 
-function startGame(){
-
-  document.addEventListener('keyup', (e) =>{
+  input.addEventListener('keyup', (e) => {
     let letter = e.key;
-    if(game.checkLetter(letter, game.wordSelected)){
-      let x = game.getLetterPos(game.wordSelected, letter);
-      game.dash = game.updateDash(game.dash,letter, x);
-      currentWord.innerText = game.dash;
+    console.log(game.wrongGuesses);
+    let test = re.test(letter);
+
+    if (test) {
+
+      if (game.checkLetter(letter, game.wordSelected)) {
+        let x = game.getLetterPos(game.wordSelected, letter);
+        game.dash = game.updateDash(game.dash, letter, x);
+        currentWord.innerText = game.dash;
 
 
-      if(ui.dash == game.wordSelected){
-        game.won++;
-        pSaved.innerText = `Patients saved: ${game.won}`;
-        console.log('you win!');
-        int();
-      }
+        if (game.dash == game.wordSelected) {
+          lettersTried.innerHTML = '';
+          game.won++;
+          pSaved.innerText = `Patients saved: ${game.won}`;
+          console.log('you win!');
+        }
 
-    } else{
-      game.wrongGuesses++;
-      lettersTried.innerHTML +=`<span>${letter}</span>`;
-      if(game.wrongGuesses > 10){
-        lettersTried.innerHTML = '';
-        game.wrongGuesses = 0;
-        game.lost++;
-        pLost.innerText = `Patients Lost: ${game.lost}`;
-        console.log('you lost');
-        int();
+      } else {
+        game.wrongGuesses--;
+
+        if(images[game.wrongGuesses])ui.removePart(images[game.wrongGuesses]);
+        lettersTried.innerHTML += `<span>${letter}</span>`;
+        if (game.wrongGuesses == 0) {
+          lettersTried.innerHTML = '';
+          game.wrongGuesses = 8;
+          game.lost++;
+          pLost.innerText = `Patients Lost: ${game.lost}`;
+          console.log('you lost');
+
+        }
       }
     }
   });
 }
 
 function int() {
-  introCard.addEventListener('click', () => ui.slideOut(introCard));
+  ui.resetImg(images);
   game.wordSelected = game.words[game.rand(game.wordsLen())];
   game.dash = game.dashCreator(game.wordSelected);
   currentWord.innerText = game.dash;
   console.log(game.wordSelected);
-  instructionsCard.addEventListener('click', () => {
-    startGame();
- });
-
+  startGame();
 }
 
 
+
+
 int();
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -90,12 +87,12 @@ const initGame = () => {
 };
 
 
-function getData(req){
-  return fetch('https://wordsapiv1.p.mashape.com/words/' + req +'/synonyms',{
+function getData(req) {
+  return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/synonyms', {
     method: 'GET',
     headers: {
       "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
-      "X-Mashape-Host":"wordsapiv1.p.mashape.com"
+      "X-Mashape-Host": "wordsapiv1.p.mashape.com"
     }
   });
 }

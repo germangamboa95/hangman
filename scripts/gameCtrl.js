@@ -6,7 +6,7 @@ const game = {
 
   wordSelected: '',
 
-  wrongGuesses: 0,
+  wrongGuesses: 7,
 
   lost: 0,
 
@@ -49,6 +49,12 @@ const ui = {
 
   removePart: (id) => {
     id.style.display = "none";
+  },
+
+  resetImg: (ids) => {
+    for(let i = 0; i < ids.length; i++){
+      ids[i].style.display ='inline-block';
+    }
   }
 
 
