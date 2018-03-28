@@ -12,7 +12,7 @@ const Game = {
 
   gamedata: {
 
-    words: ['hives', 'fever', 'nausea', 'injury'],
+    words: ['hives', 'fever', 'vomit', 'injury', 'fracture', 'blister' ,'tumor' ,'headache' ,'malaria'],
 
     selected: '',
 
