@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
   <link rel="stylesheet" href="assets/css/main.css">
   <title>Document</title>
 
@@ -35,60 +35,64 @@
   </header>
   <main>
     <div class="container center-align">
-      <div class="row">
 
-        <div id="intro" class="card col s12 m5 red lighten-1 animated slideInRight">
-          <div class="card-content white-text">
-            <span class="card-title">Please Help!</span>
-            <p>Doctor, I am glad you could make it. We need help diagnosing these patients. All we have to go is synonyms of condition. We can only afford to make 6 errors per patient.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">Let's go!</a>
 
-          </div>
+      <div id="intro" class="card col s12 m12 red lighten-1 animated slideInRight" style="margin: 5em auto; display: none">
+        <div class="card-content white-text">
+          <span class="card-title">Please Help!</span>
+          <p>Doctor, I am glad you could make it. We need help diagnosing these patients. All we have to go is synonyms of condition. We can only afford to make 6 errors per patient.</p>
         </div>
+        <div class="card-action">
+          <a href="#">Let's go!</a>
 
-        <div id="instructions" class="card col s12 m5 red lighten-1 animated slideInRight">
-          <div class="card-content white-text">
-            <span class="card-title">Instructions</span>
-            <p>Guess the word one letter at the time. Use the clues to guide you. Remember you only have 6 attempts per patient. Good Luck!</p>
-          </div>
-          <div class="card-action">
-            <a href="#">Let's go!</a>
-
-          </div>
         </div>
       </div>
-        <div class="row">
-        <div id="game-card" class="card col s12 m12 animated">
-          <div class="card-image waves-effect waves-block waves-light">
-            <div class="stickman-container">
-            <img  class="game-img base" src="assets/imgs/stickman/head.png" alt="stickman image container">
-            <img  class=" game-img overlay" src="assets/imgs/stickman/body.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
-            <img   class=" game-img overlay" src="assets/imgs/stickman/left-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
-            <img  class=" game-img overlay" src="assets/imgs/stickman/right-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
-            <img  class=" game-img overlay" src="assets/imgs/stickman/left-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
-            <img  class=" game-img overlay" src="assets/imgs/stickman/right-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
-        </div>
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Operating Room<i class="material-icons right">more_vert</i></span>
-            <div id="current-word">_ _ _ _ _ _ _ _ </div>
-            <input id='input' type="text" name="user_input" value="">
-            <div id="letters-tried">
 
-            </div>
-            <ul>
-              <li id="p-saved">Patients saved: 0</li>
-              <li id="p-lost">Patients lost: 0</li>
-            </ul>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
+      <div id="instructions" class="card col s12 m12 red lighten-1 animated slideInRight" style="display: none; margin: 5em auto;">
+        <div class="card-content white-text">
+          <span class="card-title">Instructions</span>
+          <p>Guess the word one letter at the time. Use the clues to guide you. Remember you only have 6 attempts per patient.<br> <strong><em>Remember to check the patient chart by clicking on the card menu!</em></strong><br> Good Luck!</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Let's go!</a>
+
         </div>
       </div>
+
+
+      <div id="game-card" class="card col s12 m12 animated slideInRight" style="display: none; margin: 5em auto;">
+        <div class="card-image waves-effect waves-block waves-light">
+          <div class="stickman-container">
+            <img class="game-img base" src="assets/imgs/stickman/head.png" alt="stickman image container">
+            <img class=" game-img overlay" src="assets/imgs/stickman/body.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img class=" game-img overlay" src="assets/imgs/stickman/left-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img class=" game-img overlay" src="assets/imgs/stickman/right-arm.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img class=" game-img overlay" src="assets/imgs/stickman/left-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+            <img class=" game-img overlay" src="assets/imgs/stickman/right-leg.png" alt="stickman image container" style="position: absolute; top: 0; left: 0;">
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Operating Room<i class="material-icons right">more_vert</i></span>
+          <div id="current-word">_ _ _ _ _ _ _ _ </div>
+          <input id='input' type="text" name="user_input" value="">
+          <div id="letters-tried">
+
+          </div>
+          <ul>
+            <li id="p-saved">Patients saved: 0</li>
+            <li id="p-lost">Patients lost: 0</li>
+          </ul>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Patient Chart<i class="material-icons right">close</i></span>
+          <p>The patient has used the following to describe his illness</p>
+          <ul id='hints'>
+
+
+          </ul>
+        </div>
+      </div>
+
 
     </div>
   </main>

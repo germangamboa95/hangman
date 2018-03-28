@@ -7,9 +7,9 @@ The aim of this project is to create a hangman type game. I will approach this b
 - [x]  Create/get all assets needed.
 - [x]  Create all the markup and styles for the app.
 - [X]   Program the game logic.
-- [ ]  Program the UI logic.
-- [ ] Test and debug.
-- [ ] alpha release.
+- [x]  Program the UI logic.
+- [x] Test and debug.
+- [x] alpha release.
 - [ ] Implement fixes and suggestions
 - [ ] Final release/ Turn in.
 

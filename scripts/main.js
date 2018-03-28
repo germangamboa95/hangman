@@ -1,4 +1,5 @@
-//Global
+
+window.onload = () => {
 const words = ['hives', 'fever', 'nausea', 'injury'];
 const introCard = document.getElementById('intro');
 const instructionsCard = document.getElementById('instructions');
@@ -9,50 +10,49 @@ const pSaved = document.getElementById('p-saved');
 const pLost = document.getElementById('p-lost');
 const input = document.getElementById('input');
 const images = document.querySelectorAll('.game-img');
-let dataObj;
-const re = /^([a-z])$/;
+const syno = document.getElementById('hints');
 
-Game.init();
+introCard.style.display = 'block';
+introCard.addEventListener('click', () =>{
+  instructionsCard.style.display = 'block';
+  introCard.style.display = 'none';
+});
+
+instructionsCard.addEventListener('click', () => {
+  gameCard.style.display = 'block';
+  instructionsCard.style.display = 'none';
+});
+
+
+
+let gamedata = Game.init();
+Ui.updateUi(currentWord, gamedata.dash);
+
+
+gameCard.addEventListener('click', () => Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item}</li>`).join('')));
+
 
 input.addEventListener(
   'keyup',
    e => {
-     let letter = e.key;
-     let gamedata = Game.play(letter);
-     console.log(gamedata);
-
      input.value = '';
+     let letter = e.key;
+     gamedata = Game.play(letter);
+     console.log(gamedata);
      Ui.updateUi(currentWord, gamedata.dash);
-     Ui.updateUi(pSaved, `Patients saved ${gamedata.won}.`);
-     Ui.updateUi(pLost, `Patients saved ${gamedata.lost}.`);
+     Ui.updateUi(pSaved, `Patients saved: ${gamedata.won}.`);
+     Ui.updateUi(pLost, `Patients lost: ${gamedata.lost}.`);
      Ui.updateUi(lettersTried, gamedata.lettersTried.map(item => item = `<span>${item}</span>`).join(''));
+     Ui.updateUi(syno, gamedata.synonyms.map(item => item = `<li>${item}</li>`).join(''));
+     Ui.removePart(images[gamedata.tries]);
+     if(gamedata.resetImg) {
+       Ui.resetImg(images);
+       Game.gamedata.resetImg = false;
+     }
+
    }
 );
 
 
 
-
-
-
-
-
-
-
-
-function getData(req) {
-  return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/synonyms', {
-    method: 'GET',
-    headers: {
-      "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
-      "X-Mashape-Host": "wordsapiv1.p.mashape.com"
-    }
-  });
-}
-
-const sortData = (data) => {
-  let obj = {
-    word: data.word,
-    synonyms: data.synonyms
-  };
-  return obj;
 };

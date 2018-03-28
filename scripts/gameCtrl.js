@@ -1,3 +1,13 @@
+function getData(req) {
+  return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/synonyms', {
+    method: 'GET',
+    headers: {
+      "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
+      "X-Mashape-Host": "wordsapiv1.p.mashape.com"
+    }
+  });
+}
+
 const Game = {
 
   gamedata: {
@@ -6,7 +16,7 @@ const Game = {
 
     selected: '',
 
-    tries: 8,
+    tries: 6,
 
     lost: 0,
 
@@ -16,7 +26,11 @@ const Game = {
 
     restart: false,
 
-    lettersTried: []
+    lettersTried: [],
+
+    synonyms: [],
+
+    resetImg: false
   },
 
   dashCreator: word => word.split('').map(item => item = '-').join(''),
@@ -44,6 +58,10 @@ const Game = {
     data.selected = data.words[this.rand(data.words.length)];
     data.dash = this.dashCreator(data.selected);
     console.log(data.selected);
+     getData(data.selected)
+     .then(res => res.json())
+     .then(json => data.synonyms = json.synonyms);
+    return data;
   },
 
   play(letter) {
@@ -71,11 +89,13 @@ const Game = {
 
       if (data.dash.trim() == data.selected.trim()) {
         data.won++;
+        data.resetImg = true;
         data.restart = true;
       }
 
       if (data.tries == 0) {
         data.lost++;
+        data.resetImg = true;
         data.restart = true;
 
       }
@@ -85,9 +105,13 @@ const Game = {
     if (data.restart) {
       console.log('game reset');
       data.restart = false;
-      data.tries = 8;
+      data.tries = 6;
       data.selected = data.words[this.rand(data.words.length)];
       data.dash = this.dashCreator(data.selected);
+      data.lettersTried = [];
+       getData(data.selected)
+       .then(res => res.json())
+       .then(json => data.synonyms = json.synonyms);
       console.log("Reset", data);
     }
 
@@ -96,18 +120,13 @@ const Game = {
   }
 };
 
-
-
-
-
-
-
-
-
 const Ui = {
 
   removePart: (id) => {
-    id.style.display = "none";
+    if(id) {
+      id.style.display = "none";
+
+    }
   },
 
   resetImg: (ids) => {
