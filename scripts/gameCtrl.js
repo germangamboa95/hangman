@@ -1,18 +1,18 @@
-// function getData(req) {
-//   return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/definitions', {
-//     method: 'GET',
-//     headers: {
-//       "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
-//       "X-Mashape-Host": "wordsapiv1.p.mashape.com"
-//     }
-//   });
-// }
+function getData(req) {
+  return fetch('https://wordsapiv1.p.mashape.com/words/' + req + '/definitions', {
+    method: 'GET',
+    headers: {
+      "X-Mashape-Key": "OloVJ7GerTmshG15D1KZdhw44Cfup168hdrjsn43mg7QZtFgop",
+      "X-Mashape-Host": "wordsapiv1.p.mashape.com"
+    }
+  });
+}
 
 const Game = {
 
   gamedata: {
 
-    words: ['hives', 'fever', 'vomit', 'injury', 'fracture', 'blister' ,'tumor' ,'headache' ,'malaria'],
+    words: ['hives', 'fever', 'vomit', 'injury', 'fracture', 'blister', 'tumor', 'headache', 'malaria'],
 
     selected: '',
 
@@ -42,7 +42,7 @@ const Game = {
   },
 
 
-/// Word is the computer word and letter is the letter the user guessed right
+  /// Word is the computer word and letter is the letter the user guessed right
   getLetterPos: (word, letter) => {
     let arr = [];
     //map???????
@@ -62,9 +62,9 @@ const Game = {
     data.selected = data.words[this.rand(data.words.length)];
     data.dash = this.dashCreator(data.selected);
     console.log(data.selected);
-     getData(data.selected)
-     .then(res => res.json())
-     .then(json => data.synonyms = json.definitions);
+    getData(data.selected)
+      .then(res => res.json())
+      .then(json => data.synonyms = json.definitions);
     return data;
   },
 
@@ -84,7 +84,7 @@ const Game = {
 
         data.dash = this.updateDash(data.dash, letter, pos);
 
-      } else if(data.lettersTried.indexOf(letter) > -1 ){
+      } else if (data.lettersTried.indexOf(letter) > -1) {
         console.log('do not be silly');
       } else {
         data.lettersTried.push(letter);
@@ -114,8 +114,8 @@ const Game = {
       data.dash = this.dashCreator(data.selected);
       data.lettersTried = [];
       getData(data.selected)
-      .then(res => res.json())
-      .then(json => data.synonyms = json.definitions);
+        .then(res => res.json())
+        .then(json => data.synonyms = json.definitions);
       console.log("Reset", data);
     }
 
@@ -127,7 +127,7 @@ const Game = {
 const Ui = {
 
   removePart: (id) => {
-    if(id) {
+    if (id) {
       id.style.display = "none";
 
     }
